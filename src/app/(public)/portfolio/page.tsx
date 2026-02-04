@@ -1,7 +1,7 @@
 import { createClient } from "../../../utils/supabase/server";
 import { VillaCard, Villa } from "@/components/features/portfolio/villa-card";
 
-export const dynamic = "force-dynamic";
+
 
 export default async function PortfolioPage() {
     const supabase = await createClient();

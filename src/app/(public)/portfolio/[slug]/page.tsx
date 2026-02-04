@@ -1,5 +1,5 @@
 import Link from "next/link";
-export const dynamic = "force-dynamic";
+
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { createClient } from "../../../../utils/supabase/server";
@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Wifi, Car, Waves, Utensils, Star, Share, ArrowLeft, ExternalLink } from "lucide-react";
 import { Villa } from "@/components/features/portfolio/villa-card";
 
-export const revalidate = 3600;
+
 
 interface PageProps {
     params: Promise<{ slug: string }>;
