@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kazas - L'Expérience Immobilière 2026</title>
+  <meta name="description" content="Gestion de villas de luxe en Martinique. Conciergerie, rénovation et optimisation de revenus.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,500,600,700&f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kazas: {
+              bg: '#F5F0E1',      // Cream
+              primary: '#2D5A2E', // Palm Green
+              accent: '#C6A87C',  // Bronze
+              dark: '#1B381C',    // Dark Green
+              glass: 'rgba(255, 255, 255, 0.1)',
+              glassBorder: 'rgba(255, 255, 255, 0.2)',
+            }
+          },
+          fontFamily: {
+            display: ['Gambetta', 'serif'],
+            body: ['Satoshi', 'sans-serif'],
+          },
+          animation: {
+            'blob': 'blob 10s infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'float-delayed': 'float 6s ease-in-out 3s infinite',
+            'squish': 'squish 3s cubic-bezier(0.25, 1, 0.5, 1) infinite',
+            'marquee': 'marquee 25s linear infinite',
+          },
+          keyframes: {
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            squish: {
+              '0%, 100%': { transform: 'scale(1)' },
+              '50%': { transform: 'scale(0.95, 1.05)' },
+            },
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-100%)' },
+            }
+          },
+          transitionTimingFunction: {
+            'bouncy': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+            'squishy': 'cubic-bezier(0.25, 1.5, 0.5, 1)',
+          },
+          borderRadius: {
+            'organic': '62% 38% 36% 64% / 56% 47% 53% 44%',
+            'organic-2': '36% 64% 71% 29% / 54% 28% 72% 46%',
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="antialiased">
+
+  <!-- Animated Background Blobs -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-kazas-primary/10 to-transparent rounded-full blur-[80px] animate-blob mix-blend-multiply"></div>
+    <div class="absolute top-1/2 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-kazas-accent/20 to-transparent rounded-full blur-[80px] animate-blob animation-delay-2000 mix-blend-multiply"></div>
+    <div class="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-t from-kazas-primary/5 to-transparent rounded-full blur-[100px] animate-blob animation-delay-4000 mix-blend-multiply"></div>
+  </div>
+
+  <!-- Navbar (Glass) -->
+  <nav class="fixed top-4 left-4 right-4 z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto">
+      <div class="glass-panel rounded-2xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between">
+        <a href="#" id="nav-logo" class="relative z-20 transition-transform active:scale-90">
+          <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/fd8a5c41-a766-4818-a017-aa38a86142e0/1770196707579-9b2e16f4/Kazas_Logo.png" 
+               alt="Kazas" class="h-8 md:h-10 w-auto object-contain">
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#valeurs" id="nav-link-valeurs" class="text-kazas-primary font-medium hover:text-kazas-accent transition-colors">Valeurs</a>
+          <a href="#services" id="nav-link-services" class="text-kazas-primary font-medium hover:text-kazas-accent transition-colors">Services</a>
+          <a href="#portfolio" id="nav-link-portfolio" class="text-kazas-primary font-medium hover:text-kazas-accent transition-colors">Portfolio</a>
+          <a href="#contact" id="nav-btn-contact" class="bg-kazas-primary text-kazas-bg px-6 py-2.5 rounded-xl font-bold squishy-btn">
+            Prendre RDV
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-toggle" class="md:hidden relative z-20 p-2 text-kazas-primary focus:outline-none squishy-btn" aria-label="Menu">
+          <iconify-icon icon="lucide:menu" class="text-3xl"></iconify-icon>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-kazas-bg/95 backdrop-blur-xl z-40 transform translate-x-full transition-transform duration-500 cubic-bezier(0.25, 1, 0.5, 1) flex flex-col justify-center items-center gap-8">
+    <a href="#valeurs" class="mobile-link text-4xl font-display text-kazas-primary">Valeurs</a>
+    <a href="#services" class="mobile-link text-4xl font-display text-kazas-primary">Services</a>
+    <a href="#portfolio" class="mobile-link text-4xl font-display text-kazas-primary">Portfolio</a>
+    <a href="#contact" class="bg-kazas-primary text-kazas-bg px-8 py-4 rounded-2xl text-xl font-bold squishy-btn mt-4">Contact</a>
+    
+    <!-- Close Button -->
+    <button id="mobile-close" class="absolute top-6 right-6 p-4 text-kazas-primary squishy-btn">
+       <iconify-icon icon="lucide:x" class="text-3xl"></iconify-icon>
+    </button>
+  </div>
+
+  <main class="relative z-10 pt-28 md:pt-36">
+    
+    <!-- Hero Section -->
+    <section class="px-4 md:px-8 max-w-[1600px] mx-auto mb-20 md:mb-32">
+      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <!-- Text Content -->
+        <div class="lg:w-1/2 flex flex-col items-start text-left reveal">
+           <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-kazas-primary/20 bg-white/30 backdrop-blur-sm mb-6 md:mb-8">
+             <span class="w-2 h-2 rounded-full bg-kazas-accent animate-pulse"></span>
+             <span class="text-xs font-bold uppercase tracking-widest text-kazas-primary">Gestion Premium 2026</span>
+           </div>
+           
+           <h1 class="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-[0.95] text-kazas-primary mb-6 md:mb-10">
+             L'Art de <br/>
+             <span class="italic text-kazas-accent inline-block transform hover:scale-105 transition-transform duration-300 cursor-default">Sublimer</span> <br/>
+             l'Exception.
+           </h1>
+           
+           <p class="text-lg md:text-xl text-kazas-primary/80 mb-8 md:mb-12 max-w-lg leading-relaxed font-medium">
+             Une approche organique et technologique de la gestion immobilière en Martinique. Performance maximale, effort minimal.
+           </p>
+           
+           <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+             <a href="#contact" id="hero-cta-audit" class="squishy-btn bg-kazas-primary text-kazas-bg px-8 py-4 rounded-2xl font-bold text-center flex items-center justify-center gap-3 group">
+               <span>Auditer mon bien</span>
+               <iconify-icon icon="lucide:arrow-up-right" class="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></iconify-icon>
+             </a>
+             <a href="#services" id="hero-cta-services" class="squishy-btn glass-panel text-kazas-primary px-8 py-4 rounded-2xl font-bold text-center hover:bg-white/50 transition-colors">
+               Découvrir l'offre
+             </a>
+           </div>
+        </div>
+
+        <!-- Visual Content (Blob Image) -->
+        <div class="lg:w-1/2 w-full relative reveal active delay-200">
+           <!-- Glass Card Decoration -->
+           <div class="absolute -bottom-6 -left-6 z-20 glass-panel p-4 md:p-6 rounded-2xl animate-float-delayed max-w-[200px] md:max-w-xs">
+             <div class="flex items-center gap-3 mb-2">
+               <div class="bg-kazas-accent/20 p-2 rounded-lg text-kazas-primary">
+                 <iconify-icon icon="lucide:trending-up" class="text-xl md:text-2xl"></iconify-icon>
+               </div>
+               <span class="text-2xl md:text-3xl font-display text-kazas-primary">+35%</span>
+             </div>
+             <p class="text-sm text-kazas-primary/70 font-medium">Revenus moyens constatés</p>
+           </div>
+
+           <div class="relative z-10 w-full aspect-[4/5] md:aspect-square overflow-hidden rounded-organic animate-float shadow-2xl shadow-kazas-primary/20">
+             <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2071&auto=format&fit=crop" 
+                  alt="Villa de luxe Martinique" 
+                  class="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-1000">
+             <div class="absolute inset-0 bg-gradient-to-t from-kazas-primary/20 to-transparent"></div>
+           </div>
+           
+           <!-- Decorative circle -->
+           <div class="absolute -top-10 -right-10 w-32 h-32 bg-kazas-accent/30 rounded-full blur-2xl -z-10"></div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Services (Squishy Cards) -->
+    <section id="services" class="px-4 md:px-8 max-w-[1400px] mx-auto mb-32">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <h2 class="text-4xl md:text-6xl font-display text-kazas-primary mb-6">
+          Expertise <span class="text-kazas-accent italic">360°</span>
+        </h2>
+        <p class="text-kazas-primary/70 text-lg md:text-xl">
+          Une suite de services conçue pour maximiser votre rentabilité tout en préservant l'intégrité de votre bien.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <div class="group glass-panel rounded-3xl p-8 squishy-hover min-h-[320px] flex flex-col justify-between reveal">
+          <div class="w-14 h-14 bg-kazas-primary/10 rounded-2xl flex items-center justify-center text-kazas-primary group-hover:bg-kazas-primary group-hover:text-kazas-bg transition-colors duration-300">
+            <iconify-icon icon="lucide:monitor-smartphone" class="text-3xl"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-3 text-kazas-primary">Diffusion Digitale</h3>
+            <p class="text-kazas-primary/70 leading-relaxed">Photos HDR, rédaction SEO et multidiffusion synchronisée sur toutes les plateformes mondiales.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="group glass-panel rounded-3xl p-8 squishy-hover min-h-[320px] flex flex-col justify-between reveal delay-100">
+          <div class="w-14 h-14 bg-kazas-primary/10 rounded-2xl flex items-center justify-center text-kazas-primary group-hover:bg-kazas-primary group-hover:text-kazas-bg transition-colors duration-300">
+            <iconify-icon icon="lucide:concierge-bell" class="text-3xl"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-3 text-kazas-primary">Conciergerie</h3>
+            <p class="text-kazas-primary/70 leading-relaxed">Accueil physique, ménage de standing hôtelier, linge de maison et assistance voyageurs 24/7.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="group glass-panel rounded-3xl p-8 squishy-hover min-h-[320px] flex flex-col justify-between reveal delay-200">
+          <div class="w-14 h-14 bg-kazas-primary/10 rounded-2xl flex items-center justify-center text-kazas-primary group-hover:bg-kazas-primary group-hover:text-kazas-bg transition-colors duration-300">
+            <iconify-icon icon="lucide:paintbrush" class="text-3xl"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-3 text-kazas-primary">Design Intérieur</h3>
+            <p class="text-kazas-primary/70 leading-relaxed">Home staging stratégique et coordination de travaux pour créer le coup de cœur immédiat.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="group glass-panel rounded-3xl p-8 squishy-hover min-h-[320px] flex flex-col justify-between reveal delay-300">
+          <div class="w-14 h-14 bg-kazas-primary/10 rounded-2xl flex items-center justify-center text-kazas-primary group-hover:bg-kazas-primary group-hover:text-kazas-bg transition-colors duration-300">
+            <iconify-icon icon="lucide:bar-chart-2" class="text-3xl"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-3 text-kazas-primary">Revenue Mgmt</h3>
+            <p class="text-kazas-primary/70 leading-relaxed">Algorithmes de tarification dynamique pour ajuster les prix en temps réel selon la demande.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio (Organic Grid) -->
+    <section id="portfolio" class="mb-32">
+      <div class="px-4 md:px-8 max-w-[1400px] mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+           <h2 class="text-4xl md:text-6xl font-display text-kazas-primary max-w-lg">
+             Nos plus belles <br/>
+             <span class="text-kazas-accent">réussites</span>
+           </h2>
+           <a href="#contact" id="link-portfolio-all" class="hidden md:inline-flex items-center gap-2 text-kazas-primary font-bold hover:text-kazas-accent transition-colors">
+             Voir toute la collection <iconify-icon icon="lucide:arrow-right"></iconify-icon>
+           </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+          <!-- Item 1 -->
+          <div class="group reveal">
+             <div class="relative aspect-[3/4] overflow-hidden rounded-organic mb-6">
+               <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop" 
+                    alt="Villa Archipel" 
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+               <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+               <div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-kazas-primary">
+                 Le François
+               </div>
+             </div>
+             <h3 class="text-2xl font-display text-kazas-primary mb-1">Villa Archipel</h3>
+             <p class="text-kazas-primary/60">Front de mer • 12 voyageurs</p>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="group reveal delay-100 md:mt-20">
+             <div class="relative aspect-[3/4] overflow-hidden rounded-organic-2 mb-6">
+               <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=2070&auto=format&fit=crop" 
+                    alt="Résidence Océane" 
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+               <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+               <div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-kazas-primary">
+                 Trois-Îlets
+               </div>
+             </div>
+             <h3 class="text-2xl font-display text-kazas-primary mb-1">Résidence Océane</h3>
+             <p class="text-kazas-primary/60">Vue Baie • 8 voyageurs</p>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="group reveal delay-200">
+             <div class="relative aspect-[3/4] overflow-hidden rounded-organic mb-6">
+               <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop" 
+                    alt="Manoir Tropical" 
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+               <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+               <div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-kazas-primary">
+                 Le Diamant
+               </div>
+             </div>
+             <h3 class="text-2xl font-display text-kazas-primary mb-1">Manoir Tropical</h3>
+             <p class="text-kazas-primary/60">Piscine Infinity • 10 voyageurs</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial (Glass Card) -->
+    <section class="px-4 md:px-8 mb-32">
+      <div class="max-w-4xl mx-auto glass-card-dark rounded-[3rem] p-8 md:p-16 relative overflow-hidden reveal">
+        <!-- Decorative elements inside card -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-kazas-accent/10 rounded-full blur-[80px]"></div>
+        
+        <div class="relative z-10 text-center">
+          <iconify-icon icon="lucide:quote" class="text-5xl md:text-6xl text-kazas-accent mb-8 opacity-50"></iconify-icon>
+          <blockquote class="font-display text-2xl md:text-4xl lg:text-5xl leading-tight mb-10 text-kazas-bg">
+            "Kazas a transformé notre résidence secondaire en véritable actif financier, sans que nous ayons à lever le petit doigt. Une transparence totale."
+          </blockquote>
+          <cite class="not-italic flex flex-col items-center gap-2">
+            <span class="font-bold text-lg text-kazas-accent">Marc & Sophie L.</span>
+            <span class="text-sm text-kazas-bg/60">Propriétaires à Sainte-Anne</span>
+          </cite>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact (Squishy Form) -->
+    <section id="contact" class="px-4 md:px-8 mb-32 max-w-[1200px] mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <h2 class="text-5xl md:text-7xl font-display text-kazas-primary mb-8">
+            Prêt à <br/>
+            <span class="text-kazas-accent">performer ?</span>
+          </h2>
+          <p class="text-lg text-kazas-primary/80 mb-10 leading-relaxed">
+            Discutons de votre projet autour d'un café ou en visio. L'audit de votre propriété est offert et sans engagement.
+          </p>
+          
+          <div class="space-y-6">
+            <a href="mailto:contact@kazas.mq" id="contact-link-email" class="flex items-center gap-4 group p-4 rounded-2xl hover:bg-white/50 transition-colors">
+              <div class="w-12 h-12 rounded-full bg-kazas-primary text-kazas-bg flex items-center justify-center group-hover:scale-110 transition-transform">
+                <iconify-icon icon="lucide:mail" class="text-xl"></iconify-icon>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-widest text-kazas-primary/60">Email</p>
+                <p class="text-lg font-bold text-kazas-primary">contact@kazas.mq</p>
+              </div>
+            </a>
+            <a href="tel:+596696000000" id="contact-link-phone" class="flex items-center gap-4 group p-4 rounded-2xl hover:bg-white/50 transition-colors">
+              <div class="w-12 h-12 rounded-full bg-kazas-primary text-kazas-bg flex items-center justify-center group-hover:scale-110 transition-transform">
+                <iconify-icon icon="lucide:phone" class="text-xl"></iconify-icon>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-widest text-kazas-primary/60">Téléphone</p>
+                <p class="text-lg font-bold text-kazas-primary">+596 696 00 00 00</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form class="glass-panel p-6 md:p-10 rounded-[2.5rem] space-y-6 reveal delay-200">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="group">
+              <label for="firstname" class="block text-sm font-bold text-kazas-primary mb-2 ml-2">Prénom</label>
+              <input type="text" id="firstname" class="w-full bg-white/40 border border-white/40 rounded-2xl px-5 py-4 text-kazas-primary placeholder-kazas-primary/40 focus:outline-none focus:bg-white/70 focus:ring-2 focus:ring-kazas-accent/50 transition-all duration-300" placeholder="Jean" required>
+            </div>
+            <div class="group">
+              <label for="lastname" class="block text-sm font-bold text-kazas-primary mb-2 ml-2">Nom</label>
+              <input type="text" id="lastname" class="w-full bg-white/40 border border-white/40 rounded-2xl px-5 py-4 text-kazas-primary placeholder-kazas-primary/40 focus:outline-none focus:bg-white/70 focus:ring-2 focus:ring-kazas-accent/50 transition-all duration-300" placeholder="Dupont" required>
+            </div>
+          </div>
+          
+          <div class="group">
+             <label for="email" class="block text-sm font-bold text-kazas-primary mb-2 ml-2">Email</label>
+             <input type="email" id="email" class="w-full bg-white/40 border border-white/40 rounded-2xl px-5 py-4 text-kazas-primary placeholder-kazas-primary/40 focus:outline-none focus:bg-white/70 focus:ring-2 focus:ring-kazas-accent/50 transition-all duration-300" placeholder="jean@email.com" required>
+          </div>
+
+          <div class="group">
+             <label for="project" class="block text-sm font-bold text-kazas-primary mb-2 ml-2">Votre projet</label>
+             <textarea id="project" rows="4" class="w-full bg-white/40 border border-white/40 rounded-2xl px-5 py-4 text-kazas-primary placeholder-kazas-primary/40 focus:outline-none focus:bg-white/70 focus:ring-2 focus:ring-kazas-accent/50 transition-all duration-300 resize-none" placeholder="Localisation, type de bien..."></textarea>
+          </div>
+
+          <button type="button" id="submit-contact" class="w-full py-5 bg-kazas-primary text-kazas-bg font-bold text-lg rounded-2xl squishy-btn shadow-lg shadow-kazas-primary/20">
+            Lancer l'estimation gratuite
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-kazas-primary text-kazas-bg py-20 px-4 md:px-8 rounded-t-[3rem] relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+    <div class="max-w-[1400px] mx-auto relative z-10">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
+        <div>
+          <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/fd8a5c41-a766-4818-a017-aa38a86142e0/1770196707579-9b2e16f4/Kazas_Logo.png" 
+               alt="Kazas" class="h-12 brightness-0 invert mb-6 opacity-90">
+          <p class="text-kazas-bg/60 max-w-sm">
+            L'excellence immobilière en Martinique. <br/> Gestion, conciergerie et investissement.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-12 sm:gap-24">
+          <div class="flex flex-col gap-4">
+             <h4 class="font-display text-xl text-kazas-accent">Explorer</h4>
+             <a href="#valeurs" id="footer-link-valeurs" class="text-kazas-bg/70 hover:text-white transition-colors">Valeurs</a>
+             <a href="#services" id="footer-link-services" class="text-kazas-bg/70 hover:text-white transition-colors">Services</a>
+             <a href="#portfolio" id="footer-link-portfolio" class="text-kazas-bg/70 hover:text-white transition-colors">Portfolio</a>
+          </div>
+          <div class="flex flex-col gap-4">
+             <h4 class="font-display text-xl text-kazas-accent">Social</h4>
+             <a href="#" id="footer-social-insta" class="text-kazas-bg/70 hover:text-white transition-colors">Instagram</a>
+             <a href="#" id="footer-social-fb" class="text-kazas-bg/70 hover:text-white transition-colors">Facebook</a>
+             <a href="#" id="footer-social-li" class="text-kazas-bg/70 hover:text-white transition-colors">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-kazas-bg/10 text-kazas-bg/40 text-sm gap-4">
+        <p>&copy; 2026 Kazas. Tous droits réservés.</p>
+        <div class="flex gap-6">
+          <a href="#" id="footer-legal" class="hover:text-white transition-colors">Mentions Légales</a>
+          <a href="#" id="footer-privacy" class="hover:text-white transition-colors">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

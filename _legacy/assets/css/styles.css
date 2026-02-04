@@ -1,0 +1,76 @@
+    body {
+      background-color: #F5F0E1;
+      color: #2D5A2E;
+      font-family: 'Satoshi', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Glassmorphism Utilities */
+    .glass-panel {
+      background: rgba(245, 240, 225, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(45, 90, 46, 0.05);
+    }
+
+    /* Text Effects */
+    .text-gradient {
+      background: linear-gradient(135deg, #2D5A2E 0%, #1B381C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .text-stroke-sm {
+      -webkit-text-stroke: 1px #F5F0E1;
+    }
+
+    /* Custom Animations */
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    .animate-float-delayed {
+      animation: float 6s ease-in-out 3s infinite;
+    }
+    .animate-squish {
+      animation: squish 3s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+    }
+    
+    /* Marquee Animation needs to be global for dynamic widths involved */
+    .animate-marquee {
+      animation: marquee 25s linear infinite;
+    }
+
+    /* Interaction States */
+    .squishy-btn {
+      transition: transform 0.4s cubic-bezier(0.25, 1.5, 0.5, 1);
+    }
+    .squishy-btn:hover {
+      transform: scale(1.05);
+    }
+    .squishy-btn:active {
+      transform: scale(0.9);
+    }
+
+    /* Text Wrap Fixes */
+    h1, h2, h3, p {
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
