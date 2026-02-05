@@ -14,15 +14,13 @@ export function Header() {
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center gap-6">
                     <Link href="/" className="text-sm font-medium hover:text-primary/80 transition-colors">
-                        Home
+                        Accueil
                     </Link>
                     <Link href="/portfolio" className="text-sm font-medium hover:text-primary/80 transition-colors">
-                        Villas
+                        Collection
                     </Link>
-                    {/* Services link likely anchors to home section for MVP or a separate page. Architecture implies separate page or section. 
-              Let's point to /#services for now based on Landing Page story. */}
-                    <Link href="/#services" className="text-sm font-medium hover:text-primary/80 transition-colors">
-                        Services
+                    <Link href="/#valeurs" className="text-sm font-medium hover:text-primary/80 transition-colors">
+                        Valeurs
                     </Link>
                     <Link href="/contact" className="text-sm font-medium hover:text-primary/80 transition-colors">
                         Contact
@@ -31,16 +29,15 @@ export function Header() {
 
                 {/* Action Button */}
                 <div className="flex items-center gap-4">
-                    {/* Placeholder for "Audit" CTA or Mobile Menu */}
-                    <Button variant="default" size="sm" asChild className="hidden md:flex">
+                    <Button variant="default" size="sm" asChild className="hidden md:flex" aria-label="Espace Propriétaires">
                         <Link href="/audit">
-                            Owner Audit
+                            Espace Propriétaire
                         </Link>
                     </Button>
-
-                    {/* Mobile Menu Toggle (Simplified for MVP, usually triggers a Sheet/Drawer) */}
-                    {/* We will leave this space for a real mobile menu component later */}
                 </div>
+
+                {/* Mobile Menu Toggle (Simplified for MVP, usually triggers a Sheet/Drawer) */}
+                {/* We will leave this space for a real mobile menu component later */}
             </div>
         </header>
     );

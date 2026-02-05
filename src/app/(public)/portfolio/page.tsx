@@ -18,17 +18,17 @@ export default async function PortfolioPage() {
     return (
         <div className="container py-24 min-h-screen">
             <div className="flex flex-col items-center text-center space-y-4 mb-16">
-                <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight">
-                    Our Collection
+                <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight text-primary">
+                    Notre Collection
                 </h1>
                 <p className="text-muted-foreground max-w-2xl text-lg">
-                    Discover our curated selection of luxury villas in Martinique. From beachfront gems to hilltop retreats.
+                    Découvrez notre sélection exclusive de villas en Martinique. Des joyaux en bord de mer aux retraites sur les hauteurs.
                 </p>
             </div>
 
             {!villas || villas.length === 0 ? (
                 <div className="text-center py-24 text-muted-foreground">
-                    No villas found. Please check back soon.
+                    Aucune villa trouvée. Veuillez revenir bientôt.
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 row-gap-12">

@@ -81,17 +81,17 @@ export default async function VillaDetailPage(props: PageProps) {
 
                     {/* Description */}
                     <section>
-                        <h2 className="font-heading text-2xl font-semibold mb-4">About this Villa</h2>
+                        <h2 className="font-heading text-2xl font-semibold mb-4">À propos de cette Villa</h2>
                         <p className="text-muted-foreground text-lg leading-relaxed">
                             {typedVilla.description}
                             <br /><br />
-                            Escape to paradise in this stunning property, meticulously managed by Kazas to ensure a seamless 5-star experience.
+                            Évadez-vous au paradis dans cette propriété époustouflante, gérée méticuleusement par Kazas pour garantir une expérience 5 étoiles sans faille.
                         </p>
                     </section>
 
                     {/* Amenities */}
                     <section>
-                        <h2 className="font-heading text-2xl font-semibold mb-6">Amenities</h2>
+                        <h2 className="font-heading text-2xl font-semibold mb-6">Équipements</h2>
                         <div className="grid grid-cols-2 gap-4">
                             {typedVilla.amenities && Array.isArray(typedVilla.amenities) ? (
                                 typedVilla.amenities.map((amenity: string) => (
@@ -107,7 +107,7 @@ export default async function VillaDetailPage(props: PageProps) {
                                     </div>
                                 ))
                             ) : (
-                                <p>See Airbnb listing for full amenities.</p>
+                                <p>Voir l'annonce Airbnb pour tous les équipements.</p>
                             )}
                         </div>
                     </section>
@@ -115,11 +115,11 @@ export default async function VillaDetailPage(props: PageProps) {
                     {/* Gallery Grid (if more images exist) */}
                     {galleryImages.length > 0 && (
                         <section>
-                            <h2 className="font-heading text-2xl font-semibold mb-6">Gallery</h2>
+                            <h2 className="font-heading text-2xl font-semibold mb-6">Galerie</h2>
                             <div className="grid grid-cols-2 gap-4">
                                 {galleryImages.map((img, idx) => (
                                     <div key={idx} className="relative aspect-video rounded-xl overflow-hidden">
-                                        <Image src={img} alt={`Gallery ${idx}`} fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                                        <Image src={img} alt={`Galerie ${idx}`} fill className="object-cover hover:scale-105 transition-transform duration-500" />
                                     </div>
                                 ))}
                             </div>
@@ -133,9 +133,9 @@ export default async function VillaDetailPage(props: PageProps) {
                     <div className="sticky top-24 border rounded-xl p-6 shadow-lg bg-card space-y-6">
                         <div className="flex items-end justify-between border-b pb-6">
                             <div>
-                                <p className="text-sm text-muted-foreground">Starting from</p>
+                                <p className="text-sm text-muted-foreground">À partir de</p>
                                 <span className="font-heading text-3xl font-bold">€{typedVilla.price_per_night}</span>
-                                <span className="text-muted-foreground">/night</span>
+                                <span className="text-muted-foreground">/nuit</span>
                             </div>
                             <div className="flex items-center gap-1 text-sm font-medium">
                                 <Star className="w-4 h-4 fill-primary text-primary" /> 4.98
@@ -144,8 +144,8 @@ export default async function VillaDetailPage(props: PageProps) {
 
                         <div className="space-y-4">
                             <div className="bg-muted/50 p-4 rounded-lg text-sm space-y-2">
-                                <p>✨ <strong>Managed by Kazas</strong></p>
-                                <p className="text-muted-foreground">Professional cleaning, concierge support, and premium linens included.</p>
+                                <p>✨ <strong>Géré par Kazas</strong></p>
+                                <p className="text-muted-foreground">Ménage professionnel, conciergerie et linge de maison premium inclus.</p>
                             </div>
 
                             <Button size="lg" className="w-full text-lg h-12" asChild>
@@ -155,12 +155,12 @@ export default async function VillaDetailPage(props: PageProps) {
                                     rel="noopener noreferrer"
                                     className="flex items-center justify-center gap-2"
                                 >
-                                    Book on Airbnb <ExternalLink className="w-4 h-4" />
+                                    Réserver sur Airbnb <ExternalLink className="w-4 h-4" />
                                 </a>
                             </Button>
 
                             <p className="text-xs text-center text-muted-foreground">
-                                You will be redirected to our trusted partner platform for secure booking.
+                                Vous serez redirigé vers notre plateforme partenaire sécurisée.
                             </p>
                         </div>
                     </div>
