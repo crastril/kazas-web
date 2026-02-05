@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export function Header() {
     return (
-        <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
+        <header className="sticky top-0 z-50 w-full glass border-b-0">
             <div className="container flex h-16 items-center justify-between">
                 <div className="flex items-center gap-2">
                     <Link href="/" className="font-heading text-xl font-bold tracking-tight">

@@ -21,7 +21,7 @@ export function BeforeAfterSlider() {
                 fill
                 className="object-cover"
             />
-            <div className="absolute top-4 right-4 bg-black/60 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+            <div className="absolute top-4 right-4 bg-primary/90 backdrop-blur-sm text-primary-foreground px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                 After
             </div>
 
@@ -36,7 +36,7 @@ export function BeforeAfterSlider() {
                     fill
                     className="object-cover"
                 />
-                <div className="absolute top-4 left-4 bg-black/60 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                <div className="absolute top-4 left-4 bg-primary/90 backdrop-blur-sm text-primary-foreground px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                     Before
                 </div>
             </div>
